@@ -25,6 +25,7 @@ class NewCommand extends Command
             ->addArgument('name', InputArgument::REQUIRED)
             ->addOption('starter', null, InputOption::VALUE_OPTIONAL, 'Starter template to initialize with')
             ->addOption('dev', 'd', InputOption::VALUE_NONE, 'Installs the latest "development" release')
+            ->addOption('v', null, InputOption::VALUE_OPTIONAL, 'Installs the given version')
             ->addOption('no-git', null, InputOption::VALUE_NONE, 'Does not initialize a Git repository')
             ->addOption('force', 'f', InputOption::VALUE_NONE, 'Forces install even if the directory already exists');
     }
@@ -43,7 +44,7 @@ class NewCommand extends Command
 
         $directory = $name !== '.' ? getcwd() . '/' . $name : '.';
 
-        $version = $input->getOption('dev') ? ':dev-main' : '';
+        $version = $this->getVersion($input);
 
         $starter = $input->getOption('starter') ? $input->getOption('starter') : '';
 
@@ -96,6 +97,26 @@ class NewCommand extends Command
 
             return $process;
         }
+    }
+
+    /**
+     * Gets the version to install.
+     *
+     * @param  \Symfony\Component\Console\Input\InputInterface  $input
+     *
+     * @return String
+     **/
+    protected function getVersion($input)
+    {
+        if ($input->getOption('dev')) {
+            return ':dev-main';
+        };
+
+        if ($input->getOption('v')) {
+            return ':' . $input->getOption('v');
+        };
+
+        return '';
     }
 
     /**

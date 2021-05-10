@@ -99,6 +99,24 @@ class NewCommandTest extends TestCase
     }
 
     /** @test */
+    public function it_can_scaffold_a_new_jigsaw_site_from_specific_version()
+    {
+        $app = new Application('Jigsaw Installer');
+        $app->add(new NewCommand);
+
+        $tester = new CommandTester($app->find('new'));
+
+        $statusCode = $tester->execute(['name' => $this->scaffoldDirectoryName, '--v' => '1.3.23']);
+
+        $composerJson = file_get_contents($this->scaffoldDirectory . '/composer.json');
+
+        $this->assertSame(0, $statusCode);
+        $this->assertNotFalse(strpos($composerJson, '"tightenco/jigsaw": "1.3.23'));
+        $this->assertDirectoryExists($this->scaffoldDirectory . '/source');
+        $this->assertFileExists($this->scaffoldDirectory . '/source/index.blade.php');
+    }
+
+    /** @test */
     public function it_can_scaffold_a_new_site_from_a_starter_template()
     {
         $app = new Application('Jigsaw Installer');
