@@ -78,7 +78,6 @@ class NewCommand extends Command
      */
     protected function installJigsaw(InputInterface $input, OutputInterface $output, String $directory, String $version, String $starter)
     {
-        $cwd = getcwd();
         chdir($directory);
 
         $composer = $this->getComposer();
@@ -95,7 +94,7 @@ class NewCommand extends Command
                     $this->initGit($output);
                 }
 
-                chdir($cwd);
+                chdir('../');
             }
 
             return $process;
