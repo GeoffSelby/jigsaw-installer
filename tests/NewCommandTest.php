@@ -106,12 +106,12 @@ class NewCommandTest extends TestCase
 
         $tester = new CommandTester($app->find('new'));
 
-        $statusCode = $tester->execute(['name' => $this->scaffoldDirectoryName, '--v' => '1.3.23']);
+        $statusCode = $tester->execute(['name' => $this->scaffoldDirectoryName, '--v' => '1.3.33']);
 
         $composerJson = file_get_contents($this->scaffoldDirectory . '/composer.json');
 
         $this->assertSame(0, $statusCode);
-        $this->assertNotFalse(strpos($composerJson, '"tightenco/jigsaw": "1.3.23'));
+        $this->assertNotFalse(strpos($composerJson, '"tightenco/jigsaw": "1.3.33'));
         $this->assertDirectoryExists($this->scaffoldDirectory . '/source');
         $this->assertFileExists($this->scaffoldDirectory . '/source/index.blade.php');
     }
