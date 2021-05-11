@@ -93,8 +93,6 @@ class NewCommand extends Command
                 if (!$input->getOption('no-git')) {
                     $this->initGit($output);
                 }
-
-                chdir('../');
             }
 
             return $process;
