@@ -2,10 +2,9 @@
 
 CLI to easily install and initialize [Jigsaw](https://jigsaw.tighten.co) sites with a single command
 
-<a href="https://github.com/GeoffSelby/jigsaw-installer/actions"><img src="https://github.com/GeoffSelby/jigsaw-installer/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/geoffselby/jigsaw-installer"><img src="https://img.shields.io/packagist/dt/geoffselby/jigsaw-installer" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/geoffselby/jigsaw-installer"><img src="https://img.shields.io/packagist/v/geoffselby/jigsaw-installer" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/geoffselby/jigsaw-installer"><img src="https://img.shields.io/packagist/l/geoffselby/jigsaw-installer" alt="License"></a>
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/GeoffSelby/jigsaw-installer/tests/main?logo=github&style=for-the-badge)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/geoffselby/jigsaw-installer?label=Version&style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/GeoffSelby/jigsaw-installer?style=for-the-badge)
 
 ## Installation
 
@@ -47,6 +46,14 @@ If you would like to install the development version of Jigsaw to test out new f
 
 ```bash
 jigsaw new my-site --dev
+```
+
+### Install a specific version
+
+In rare cases, you may need to install a specific version of Jigsaw. To do this, use the `--v` option:
+
+```bash
+jigsaw new my-site --v <version>
 ```
 
 ### Don't initialize Git
